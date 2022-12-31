@@ -28,21 +28,17 @@ function App() {
   return (
     <>
       <ApolloProvider client={client}>
+        <NavBar loggedIn={loggedIn} onLogout={handleLogout} />
         <main className="section">
           <Routes>
             <Route exact path="/" element={<JobBoard />} />
             <Route path="/companies/:companyId" element={<CompanyDetail />} />
             <Route exact path="/jobs/new" element={<JobForm />} />
             <Route path="/jobs/:jobId" element={<JobDetail />} />
-            <Route
-              exact
-              path="/login"
-              element={<LoginForm onLogin={handleLogin} />}
-            />
+            <Route exact path="/login" element={<LoginForm onLogin={handleLogin} />} />
           </Routes>
         </main>
       </ApolloProvider>
-      <NavBar loggedIn={loggedIn} onLogout={handleLogout} />
     </>
   );
 }
